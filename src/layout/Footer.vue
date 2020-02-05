@@ -1,11 +1,17 @@
 <template>
   <footer class="footer">
-    <h1>Footer</h1>
+    <h1 @click="goForward">Footer</h1>
   </footer>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    goForward() {
+      this.$router.push("customizeorder");
+    }
+  }
+};
 </script>
 
 <style></style>

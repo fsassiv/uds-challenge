@@ -1,11 +1,14 @@
 <template>
   <div class="app__content">
+    <!-- HEADER COMPONENT -->
     <slot name="header" />
+    <!-- MAIN ROUTE -->
     <main class="main">
       <transition name="slide">
         <router-view></router-view>
       </transition>
     </main>
+    <!-- FOOTER COMPONENT -->
     <slot name="footer" />
   </div>
 </template>

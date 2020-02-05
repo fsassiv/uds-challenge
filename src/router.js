@@ -33,17 +33,26 @@ const router = new Router({
       path: "/neworder",
       name: "home",
       alias: "/",
-      component: NewOrder
+      component: NewOrder,
+      meta: {
+        step: 1
+      }
     },
     {
       path: "/customizeorder",
       name: "customization",
-      component: CustomizeOrder
+      component: CustomizeOrder,
+      meta: {
+        step: 2
+      }
     },
     {
       path: "/revieworder",
       name: "revieworder",
-      component: ReviewOrder
+      component: ReviewOrder,
+      meta: {
+        step: 3
+      }
     }
   ]
 });
