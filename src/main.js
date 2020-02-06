@@ -1,29 +1,17 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import { Server } from "miragejs";
-import flavors from "./data/flavors";
-import sizes from "./data/sizes";
+import store from "./store/index";
 import "spectre.css/dist/spectre.min.css";
 import "spectre.css/dist/spectre-exp.min.css";
 import "spectre.css/dist/spectre-icons.min.css";
+import { makeServer } from "./mockServer";
 
-new Server({
-  routes() {
-    this.timing = 1000;
-
-    this.get("/api/flavors", () => {
-      return flavors;
-    });
-
-    this.get("/api/sizes", () => {
-      return sizes;
-    });
-  }
-});
+makeServer();
 
 new Vue({
   el: "#app",
   router,
+  store,
   render: h => h(App)
 });

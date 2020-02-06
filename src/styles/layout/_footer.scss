@@ -1,13 +1,27 @@
 .footer {
-  flex-basis: 10%;
-  padding: 0 15px;
+  flex-basis: 15%;
+  padding: 15px;
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: end;
-  justify-content: flex-end;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
   &__btn {
     width: 100%;
+    height: 95%;
+    margin-top: 1%;
+  }
+  @media screen and(min-width:960px) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    &__btn {
+      width: 45%;
+      height: unset;
+    }
   }
 }

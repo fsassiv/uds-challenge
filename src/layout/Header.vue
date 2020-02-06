@@ -2,13 +2,12 @@
   <header class="header">
     <div class="container">
       <h3 class="header__title">
-        Super Açai <i class="show-sm icon icon-menu"></i>
+        Super Açai
+        <!-- <i class="show-sm icon icon-menu"></i> -->
       </h3>
       <ul class="step">
         <li class="step-item" :class="{ active: $route.meta.step === 1 }">
-          <a href="#" class="tooltip" data-tooltip="Sabor e tamanho"
-            >Sabor e tamanho</a
-          >
+          <a href="#" class="tooltip" data-tooltip="Sabor e tamanho">Sabor e tamanho</a>
         </li>
         <li class="step-item" :class="{ active: $route.meta.step === 2 }">
           <a href="#" class="tooltip" data-tooltip="Adicionais">Adicionais</a>

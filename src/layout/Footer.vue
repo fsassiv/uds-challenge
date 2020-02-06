@@ -1,22 +1,20 @@
 <template>
   <footer class="footer">
+    <button v-show="showBackBtn" class="btn btn-secondary footer__btn" @click="$router.go(-1)">
+      <i class="icon icon-arrow-left"></i>Voltar
+    </button>
     <button
       v-if="this.$route.meta.step <= 2"
       @click="goForward"
       class="btn btn-primary footer__btn"
-    >
-      Próximo
-    </button>
+      :disabled="!nextStep"
+    >Próximo</button>
     <button
       v-else-if="this.$route.meta.step == 3"
       @click="goFinish"
       class="btn btn-primary footer__btn"
-    >
-      Confirmar
-    </button>
-    <button v-else @click="goRestart" class="btn btn-primary footer__btn">
-      Novo pedido
-    </button>
+    >Confirmar</button>
+    <button v-else @click="goRestart" class="btn btn-primary footer__btn">Novo pedido</button>
   </footer>
 </template>
 
@@ -29,8 +27,27 @@ export default {
         "2": "customizeorder",
         "3": "revieworder",
         "4": "conclusion"
-      }
+      },
+      showBackBtn: false
     };
+  },
+  computed: {
+    order() {
+      return this.$store.getters.getOrder;
+    },
+    nextStep() {
+      const { flavor, size } = this.$store.getters.getOrder;
+      return flavor.price !== 0 && size.price !== 0;
+    }
+  },
+  watch: {
+    $route(to, from) {
+      if (to.name === "home" || to.name === "conclusion") {
+        this.showBackBtn = false;
+        return;
+      }
+      this.showBackBtn = true;
+    }
   },
   methods: {
     goForward() {
@@ -40,6 +57,8 @@ export default {
       this.$router.push("conclusion");
     },
     goRestart() {
+      this.currentRoute = this.$route.name;
+      this.$store.commit("resetOrder");
       this.$router.push("neworder");
     }
   }
