@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="columns col-gapless">
-      <div class="column hide-xs col-3">
+      <div class="column hide-sm col-3">
         <SideMenu />
       </div>
-      <div class="column col-xs-12 col-9">
+      <div class="column col-sm-12 col-9">
         <Content>
           <template v-slot:header>
             <Header />

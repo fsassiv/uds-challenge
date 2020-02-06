@@ -1,6 +1,6 @@
 <template>
   <div class="sidemenu bg-primary">
-    <h1>Side Menu</h1>
+    <h3>Side Menu</h3>
   </div>
 </template>
 

@@ -1,7 +1,9 @@
 <template>
   <header class="header">
     <div class="container">
-      <h3 class="">Super Açai</h3>
+      <h3 class="header__title">
+        Super Açai <i class="show-sm icon icon-menu"></i>
+      </h3>
       <ul class="step">
         <li class="step-item" :class="{ active: $route.meta.step === 1 }">
           <a href="#" class="tooltip" data-tooltip="Sabor e tamanho"

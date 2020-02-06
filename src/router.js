@@ -23,6 +23,16 @@ const ReviewOrder = resolve => {
   );
 };
 
+const Conclusion = resolve => {
+  require.ensure(
+    ["./pages/Conclusion.vue"],
+    () => {
+      resolve(require("./pages/Conclusion.vue"));
+    },
+    "conclusion"
+  );
+};
+
 Vue.use(Router);
 
 const router = new Router({
@@ -52,6 +62,14 @@ const router = new Router({
       component: ReviewOrder,
       meta: {
         step: 3
+      }
+    },
+    {
+      path: "/conclusion",
+      name: "conclusion",
+      component: Conclusion,
+      meta: {
+        step: 4
       }
     }
   ]

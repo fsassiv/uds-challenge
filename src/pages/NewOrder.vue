@@ -3,35 +3,28 @@
     <div class="container">
       <section class="page__section">
         <h4 class="page__title">Selecione o sabor</h4>
-        <div class="columns">
-          <div class="column col-xs-12 col-4">
-            <Flavor />
-          </div>
-          <div class="column col-xs-12 col-4">
-            <Flavor />
-          </div>
-          <div class="column col-xs-12 col-4">
-            <Flavor />
+        <div v-if="loading" class="loading loading-lg"></div>
+        <div v-else class="columns">
+          <div
+            class="column col-xs-12 col-4"
+            v-for="flavor in flavors"
+            :key="flavor.id"
+          >
+            <Flavor :flavor="flavor" />
           </div>
         </div>
       </section>
       <section class="page__section">
         <h4 class="page__title">Selecione o tamalho</h4>
-
-        <div class="columns">
-          <div class="column col-xs-12 col-4">
+        <div v-if="loading" class="loading loading-lg"></div>
+        <div v-else class="columns">
+          <div
+            class="column col-xs-12 col-4"
+            v-for="size in sizes"
+            :key="size.id"
+          >
             <button class="btn btn-primary flavor__btn">
-              300ml
-            </button>
-          </div>
-          <div class="column col-xs-12 col-4">
-            <button class="btn btn-primary flavor__btn">
-              500ml
-            </button>
-          </div>
-          <div class="column col-xs-12 col-4">
-            <button class="btn btn-primary flavor__btn">
-              700ml
+              {{ size.size }}
             </button>
           </div>
         </div>
@@ -42,8 +35,38 @@
 
 <script>
 import Flavor from "../components/Flavor";
+import axios from "axios";
 
 export default {
+  data() {
+    return {
+      flavors: [],
+      sizes: [],
+      loading: true
+    };
+  },
+  created() {
+    //GET FLAVORS
+    axios
+      .get("/api/flavors")
+      .then(response => {
+        this.flavors = [...response.data];
+        this.loading = false;
+      })
+      .catch(err => {
+        console.error(err);
+      });
+    //GET SIZES
+    axios
+      .get("/api/sizes")
+      .then(response => {
+        this.sizes = [...response.data];
+        this.loading = false;
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  },
   components: {
     Flavor
   }

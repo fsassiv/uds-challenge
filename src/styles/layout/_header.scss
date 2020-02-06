@@ -1,4 +1,12 @@
 .header {
   flex-basis: 20%;
   padding-top: 3%;
+  &__title {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+            align-items: center;
+  }
 }

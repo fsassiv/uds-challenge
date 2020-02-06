@@ -4,7 +4,7 @@
     <slot name="header" />
     <!-- MAIN ROUTE -->
     <main class="main">
-      <transition name="slide">
+      <transition name="slide" mode="out-in">
         <router-view></router-view>
       </transition>
     </main>
