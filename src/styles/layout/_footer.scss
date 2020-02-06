@@ -19,6 +19,8 @@
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     flex-direction: row;
+    -webkit-box-pack: end;
+            justify-content: flex-end;
     &__btn {
       width: 45%;
       height: unset;
