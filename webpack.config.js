@@ -1,5 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
+const SWPrecache = require("sw-precache-webpack-plugin");
 
 module.exports = {
   entry: "./src/main.js",
@@ -92,6 +93,18 @@ if (process.env.NODE_ENV === "production") {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    }),
+    new SWPrecache({
+      cacheId: "uds-challenge",
+      filepath: "service-worker.js",
+      staticFileGlobs: [
+        "index.html",
+        "dist/manifest.json",
+        "dist/*.js",
+        "dist/css/*.css",
+        "dist/images/**/*.{png,jpg,jpeg,svg}"
+      ],
+      stripPrefix: "/"
     })
   ]);
 }

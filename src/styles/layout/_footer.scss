@@ -19,10 +19,10 @@
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     flex-direction: row;
-    -webkit-box-pack: end;
-            justify-content: flex-end;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
     &__btn {
-      width: 45%;
+      // width: 45%;
       height: unset;
     }
   }

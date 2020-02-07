@@ -34,6 +34,12 @@ export default {
       msg: "Welcome to Your Vue.js App"
     };
   },
+  created() {
+    //redirecionar para pagina inicial
+    if (this.$route.name !== "home") {
+      this.$router.push("/");
+    }
+  },
   components: {
     Header,
     Footer,
