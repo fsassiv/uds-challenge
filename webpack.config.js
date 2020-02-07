@@ -99,7 +99,7 @@ if (process.env.NODE_ENV === "production") {
       filepath: "service-worker.js",
       staticFileGlobs: [
         "index.html",
-        "dist/manifest.json",
+        "manifest.json",
         "dist/*.js",
         "dist/css/*.css",
         "dist/images/**/*.{png,jpg,jpeg,svg}"
