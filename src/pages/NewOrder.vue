@@ -2,7 +2,7 @@
   <div class="page">
     <div class="container">
       <section class="page__section">
-        <h4 class="page__title">Selecione o sabor</h4>
+        <h4 class="page__title">Pick your flavor</h4>
         <div v-if="loading" class="loading loading-lg"></div>
         <div v-else class="columns">
           <div
@@ -15,7 +15,7 @@
         </div>
       </section>
       <section class="page__section">
-        <h4 class="page__title">Selecione o tamalho</h4>
+        <h4 class="page__title">Pick your cup size</h4>
         <div v-if="loading" class="loading loading-lg"></div>
         <div v-else class="columns">
           <div

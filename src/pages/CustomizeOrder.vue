@@ -2,7 +2,7 @@
   <div class="page">
     <div class="container">
       <section class="page__section">
-        <h4 class="page__title">Personalize seu pedido</h4>
+        <h4 class="page__title">Customize your order</h4>
         <div class="columns">
           <div
             class="column col-xs-12 col-4"

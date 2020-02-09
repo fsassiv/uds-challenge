@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <div class="container">
-      <h1 class="page__title text-center">Parabens</h1>
+      <h1 class="page__title text-center">Congratulations</h1>
       <h5 class="page__subtitle text-center">
-        Seu pedido está sendo preparado. Aguarde...
+        Your order is on it's way. Wait just a moment...
       </h5>
       <div class="columns">
         <div class="column col-6 col-md-10 col-mx-auto">

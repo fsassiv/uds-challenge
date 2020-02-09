@@ -3,7 +3,7 @@
     <div class="card-header">
       <h5 class="card-title h5">{{ item.name | capitalize }}</h5>
       <div class="card-subtitle text-gray">
-        Preço: {{ item.price | formatToCurrency }} - Tempo de preparo:
+        Price: {{ item.price | formatToCurrency }} - Time:
         {{ item.time | formatToMin }}
       </div>
     </div>
@@ -11,7 +11,7 @@
       <div class="form-group">
         <label class="form-checkbox">
           <input type="checkbox" :id="item.id" :value="item" v-model="added" />
-          <i class="form-icon"></i> Adicionar ao pedido
+          <i class="form-icon"></i> Add to order
         </label>
       </div>
     </div>

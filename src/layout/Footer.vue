@@ -5,7 +5,7 @@
       class="btn btn-secondary footer__btn"
       @click="$router.go(-1)"
     >
-      <i class="icon icon-arrow-left"></i>Voltar
+      <i class="icon icon-arrow-left"></i>Go back
     </button>
     <button
       v-if="this.$route.meta.step <= 2"
@@ -13,17 +13,17 @@
       class="btn btn-primary footer__btn"
       :disabled="!nextStep"
     >
-      Próximo
+      Next
     </button>
     <button
       v-else-if="this.$route.meta.step == 3"
       @click="goFinish"
       class="btn btn-primary footer__btn"
     >
-      Confirmar
+      Confirm
     </button>
     <button v-else @click="goRestart" class="btn btn-primary footer__btn">
-      Novo pedido
+      Make a new order
     </button>
   </footer>
 </template>

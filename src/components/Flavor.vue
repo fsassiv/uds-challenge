@@ -6,13 +6,13 @@
     <div class="card-header">
       <div class="card-title h5">{{ item.name | capitalize }}</div>
       <div class="card-subtitle text-gray">
-        {{ item.price | toFloat | formatToCurrency }} - Preparo:
+        {{ item.price | toFloat | formatToCurrency }} - Ready in:
         {{ item.time | formatToMin }}
       </div>
     </div>
     <div class="card-footer">
       <button @click="addToOrder" class="btn btn-primary flavor__btn">
-        Adicionar ao pedido
+        Add to order
       </button>
     </div>
   </div>

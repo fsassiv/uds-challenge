@@ -36,7 +36,8 @@
           </tbody>
         </table>
         <br />
-        <h4>Your total is {{ total | formatToCurrency }}</h4>
+        <h4>Your total is {{ totalPrice | formatToCurrency }}</h4>
+        <h5>and it will be ready in {{ totalTime | formatToMin }}</h5>
       </section>
     </div>
   </div>
@@ -60,11 +61,19 @@ export default {
     this.aditionals = aditionals;
   },
   computed: {
-    total() {
-      const subtotal = this.flavor.price + this.size.price;
-      //ADD UP THE ADITIONALS PRICE
+    totalPrice() {
+      return this.getTotal("price");
+    },
+    totalTime() {
+      return this.getTotal("time");
+    }
+  },
+  methods: {
+    getTotal(targetProp) {
+      const subtotal = this.flavor[targetProp] + this.size[targetProp];
+
       const aditionalsSubtotal = this.aditionals.reduce(
-        (acc, cv) => acc + cv.price,
+        (acc, cv) => acc + cv[targetProp],
         0
       );
 

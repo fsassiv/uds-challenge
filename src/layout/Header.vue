@@ -7,16 +7,20 @@
       </h3>
       <ul class="step">
         <li class="step-item" :class="{ active: $route.meta.step === 1 }">
-          <a href="#" class="tooltip" data-tooltip="Sabor e tamanho">Sabor e tamanho</a>
+          <a href="#" class="tooltip" data-tooltip="Flavor and size"
+            >Flavor and size</a
+          >
         </li>
         <li class="step-item" :class="{ active: $route.meta.step === 2 }">
-          <a href="#" class="tooltip" data-tooltip="Adicionais">Adicionais</a>
+          <a href="#" class="tooltip" data-tooltip="Aditionals">Aditionals</a>
         </li>
         <li class="step-item" :class="{ active: $route.meta.step === 3 }">
-          <a href="#" class="tooltip" data-tooltip="Revisão">Revisão</a>
+          <a href="#" class="tooltip" data-tooltip="Check your order"
+            >Check your order</a
+          >
         </li>
         <li class="step-item" :class="{ active: $route.meta.step === 4 }">
-          <a href="#" class="tooltip" data-tooltip="Conclusão">Conclusão</a>
+          <a href="#" class="tooltip" data-tooltip="Success">Success</a>
         </li>
       </ul>
     </div>
