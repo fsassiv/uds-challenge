@@ -28,7 +28,7 @@
             </tr>
             <tr v-for="item in aditionals" :key="item.id">
               <td>{{ item.name | capitalize }}</td>
-              <td>{{ item.size }}</td>
+              <td>{{ item.size ? item.size : "N/A" }}</td>
               <td>{{ item.time | formatToMin }}</td>
               <td>{{ item.price | formatToCurrency }}</td>
             </tr>
