@@ -35,6 +35,8 @@ export default {
     };
   },
   created() {
+    //CHECK IF THE ADITIONAL IS ALREADY ADDED TO THE ORDER
+    //TO KEEP IT ON NAVIGATION
     const aditionalsInOrdered = this.$store.getters["order/getAditionals"];
 
     aditionalsInOrdered.forEach(item => {

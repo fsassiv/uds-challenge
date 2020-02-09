@@ -61,12 +61,16 @@ export default {
   },
   methods: {
     goForward() {
+      //GO TO THE NEXT ROUTE
       this.$router.push(this.navigation[this.$route.meta.step + 1]);
     },
     goFinish() {
+      //GO TO THE LAST ROUTE
       this.$router.push("conclusion");
     },
     goRestart() {
+      //RESTART THE APP
+      //RESET THE ORDER AND RETURN TO THE HOME ROUTE
       this.currentRoute = this.$route.name;
       this.$store.commit("order/resetOrder");
       this.$router.push("neworder");

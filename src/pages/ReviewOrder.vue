@@ -26,6 +26,7 @@
               <td>{{ size.time | formatToMin }}</td>
               <td>{{ size.price | formatToCurrency }}</td>
             </tr>
+            <!-- RENDER LIST OF ADITIONALS, IF THERE IS ANY -->
             <tr v-for="item in aditionals" :key="item.id">
               <td>{{ item.name | capitalize }}</td>
               <td>{{ item.size ? item.size : "N/A" }}</td>
@@ -61,6 +62,7 @@ export default {
   computed: {
     total() {
       const subtotal = this.flavor.price + this.size.price;
+      //ADD UP THE ADITIONALS PRICE
       const aditionalsSubtotal = this.aditionals.reduce(
         (acc, cv) => acc + cv.price,
         0

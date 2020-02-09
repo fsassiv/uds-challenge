@@ -1,5 +1,10 @@
 # uds-challenge
 
+LIVE VERSION ON NETLIFY [UDS-CHALLENGE](https://5e3f57b1c49d150008b87bb9--thirsty-edison-a3034a.netlify.com/)
+Author: Flavio Andrade
+
+Obs: Aplicação também esta configurada como PWA
+
 > A Vue.js project
 
 ## Build Setup
