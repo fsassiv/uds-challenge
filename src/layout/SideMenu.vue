@@ -1,7 +1,8 @@
 <template>
-  <div class="sidemenu bg-primary">
-    <h3>Side Menu</h3>
-  </div>
+  <div
+    class="sidemenu"
+    style="background-image:url('/src/assets/app-banner.jpeg')"
+  ></div>
 </template>
 
 <script>

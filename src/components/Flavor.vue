@@ -5,12 +5,15 @@
     </div>
     <div class="card-header">
       <div class="card-title h5">{{ item.name }}</div>
-      <div
-        class="card-subtitle text-gray"
-      >R${{ item.price | toFloat }} - Preparo: {{ item.time }} min</div>
+      <div class="card-subtitle text-gray">
+        {{ item.price | toFloat | formatToCurrency }} - Preparo:
+        {{ item.time | formatToMin }}
+      </div>
     </div>
     <div class="card-footer">
-      <button @click="addToOrder" class="btn btn-primary flavor__btn">Adicionar ao pedido</button>
+      <button @click="addToOrder" class="btn btn-primary flavor__btn">
+        Adicionar ao pedido
+      </button>
     </div>
   </div>
 </template>
@@ -28,7 +31,7 @@ export default {
   mixins: [filtersMixins],
   methods: {
     addToOrder() {
-      this.$store.commit("addFlavor", this.item);
+      this.$store.commit("order/addFlavor", this.item);
     }
   }
 };

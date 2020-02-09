@@ -1,6 +1,10 @@
 <template>
   <footer class="footer">
-    <button v-show="showBackBtn" class="btn btn-secondary footer__btn" @click="$router.go(-1)">
+    <button
+      v-show="showBackBtn"
+      class="btn btn-secondary footer__btn"
+      @click="$router.go(-1)"
+    >
       <i class="icon icon-arrow-left"></i>Voltar
     </button>
     <button
@@ -8,13 +12,19 @@
       @click="goForward"
       class="btn btn-primary footer__btn"
       :disabled="!nextStep"
-    >Próximo</button>
+    >
+      Próximo
+    </button>
     <button
       v-else-if="this.$route.meta.step == 3"
       @click="goFinish"
       class="btn btn-primary footer__btn"
-    >Confirmar</button>
-    <button v-else @click="goRestart" class="btn btn-primary footer__btn">Novo pedido</button>
+    >
+      Confirmar
+    </button>
+    <button v-else @click="goRestart" class="btn btn-primary footer__btn">
+      Novo pedido
+    </button>
   </footer>
 </template>
 
@@ -33,10 +43,10 @@ export default {
   },
   computed: {
     order() {
-      return this.$store.getters.getOrder;
+      return this.$store.getters["order/getOrder"];
     },
     nextStep() {
-      const { flavor, size } = this.$store.getters.getOrder;
+      const { flavor, size } = this.$store.getters["order/getOrder"];
       return flavor.price !== 0 && size.price !== 0;
     }
   },

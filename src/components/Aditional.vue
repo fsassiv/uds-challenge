@@ -1,10 +1,11 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <h5 class="card-title h5">{{item.name | capitalize}}</h5>
-      <div
-        class="card-subtitle text-gray"
-      >Preço: R$ {{item.price}} - Tempo de preparo: {{item.time}}</div>
+      <h5 class="card-title h5">{{ item.name | capitalize }}</h5>
+      <div class="card-subtitle text-gray">
+        Preço: {{ item.price | formatToCurrency }} - Tempo de preparo:
+        {{ item.time | formatToMin }}
+      </div>
     </div>
     <div class="card-footer">
       <div class="form-group">
@@ -33,17 +34,25 @@ export default {
       added: false
     };
   },
+  created() {
+    const aditionalsInOrdered = this.$store.getters["order/getAditionals"];
+
+    aditionalsInOrdered.forEach(item => {
+      if (item.id === this.item.id) {
+        this.added = true;
+      }
+    });
+  },
   watch: {
     added() {
       if (this.added) {
-        this.$store.commit("addAditional", this.item);
+        this.$store.commit("order/addAditional", this.item);
         return;
       }
-      this.$store.commit("removeAditional", { id: this.item.id });
+      this.$store.commit("order/removeAditional", { id: this.item.id });
     }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

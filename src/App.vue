@@ -10,8 +10,11 @@
             <Header />
           </template>
           <transition name="slide">
-            <router-view></router-view>
+            <keep-alive>
+              <router-view></router-view>
+            </keep-alive>
           </transition>
+
           <template v-slot:footer>
             <Footer />
           </template>
@@ -26,6 +29,7 @@ import Header from "./layout/Header.vue";
 import Footer from "./layout/Footer.vue";
 import Content from "./layout/Content.vue";
 import SideMenu from "./layout/SideMenu.vue";
+import axios from "axios";
 
 export default {
   name: "app",
@@ -39,6 +43,18 @@ export default {
     if (this.$route.name !== "home") {
       this.$router.push("/");
     }
+
+    //fetch aditionals list
+    axios
+      .get("/api/adicionals")
+      .then(response => {
+        this.$store.dispatch("assets/setAditionalsAsync", response.data);
+        this.aditionals = response.data;
+        this.loading = false;
+      })
+      .catch(err => {
+        console.error(err);
+      });
   },
   components: {
     Header,

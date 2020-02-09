@@ -5,7 +5,11 @@
         <h4 class="page__title">Selecione o sabor</h4>
         <div v-if="loading" class="loading loading-lg"></div>
         <div v-else class="columns">
-          <div class="column col-xs-12 col-4" v-for="item in flavors" :key="item.id">
+          <div
+            class="column col-xs-12 col-4"
+            v-for="item in flavors"
+            :key="item.id"
+          >
             <Flavor :item="item" />
           </div>
         </div>
@@ -14,8 +18,14 @@
         <h4 class="page__title">Selecione o tamalho</h4>
         <div v-if="loading" class="loading loading-lg"></div>
         <div v-else class="columns">
-          <div class="column col-xs-12 col-4" v-for="size in sizes" :key="size.id">
-            <button @click="addSize(size)" class="btn btn-primary flavor__btn">{{ size.size }}</button>
+          <div
+            class="column col-xs-12 col-4"
+            v-for="size in sizes"
+            :key="size.id"
+          >
+            <button @click="addSize(size)" class="btn btn-primary flavor__btn">
+              {{ size.size }}ml
+            </button>
           </div>
         </div>
       </section>
@@ -59,7 +69,7 @@ export default {
   },
   methods: {
     addSize(event) {
-      this.$store.commit("addSize", { ...event });
+      this.$store.commit("order/addSize", { ...event });
     }
   },
   components: {
