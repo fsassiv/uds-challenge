@@ -4,7 +4,7 @@
       <img :src="item.imgUrl" class="img-responsive" />
     </div>
     <div class="card-header">
-      <div class="card-title h5">{{ item.name }}</div>
+      <div class="card-title h5">{{ item.name | capitalize }}</div>
       <div class="card-subtitle text-gray">
         {{ item.price | toFloat | formatToCurrency }} - Preparo:
         {{ item.time | formatToMin }}
