@@ -68,7 +68,7 @@ export default {
     },
     goRestart() {
       this.currentRoute = this.$route.name;
-      this.$store.commit("resetOrder");
+      this.$store.commit("order/resetOrder");
       this.$router.push("neworder");
     }
   }
