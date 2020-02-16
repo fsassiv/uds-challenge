@@ -11,15 +11,15 @@
       </div>
     </div>
     <div class="card-footer">
-      <button @click="addToOrder" class="btn btn-primary flavor__btn">
-        Add to order
-      </button>
+      <button @click="addFlavor(item)" class="btn btn-primary flavor__btn">Add to order</button>
     </div>
   </div>
 </template>
 
 <script>
 import filtersMixins from "../mixins/filters";
+import { mapMutations } from "vuex";
+import orderMutations from "../store/order/mutations.type";
 
 export default {
   props: {
@@ -30,9 +30,9 @@ export default {
   },
   mixins: [filtersMixins],
   methods: {
-    addToOrder() {
-      this.$store.commit("order/addFlavor", this.item);
-    }
+    ...mapMutations("order", {
+      addFlavor: orderMutations.addFlavor
+    })
   }
 };
 </script>

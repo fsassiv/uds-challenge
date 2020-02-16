@@ -5,11 +5,7 @@
         <h4 class="page__title">Pick your flavor</h4>
         <div v-if="loading" class="loading loading-lg"></div>
         <div v-else class="columns">
-          <div
-            class="column col-xs-12 col-4"
-            v-for="item in flavors"
-            :key="item.id"
-          >
+          <div class="column col-xs-12 col-4" v-for="item in flavors" :key="item.id">
             <Flavor :item="item" />
           </div>
         </div>
@@ -18,14 +14,8 @@
         <h4 class="page__title">Pick your cup size</h4>
         <div v-if="loading" class="loading loading-lg"></div>
         <div v-else class="columns">
-          <div
-            class="column col-xs-12 col-4"
-            v-for="size in sizes"
-            :key="size.id"
-          >
-            <button @click="addSize(size)" class="btn btn-primary flavor__btn">
-              {{ size.size }}ml
-            </button>
+          <div class="column col-xs-12 col-4" v-for="size in sizes" :key="size.id">
+            <button @click="addSize(size)" class="btn btn-primary flavor__btn">{{ size.size }}ml</button>
           </div>
         </div>
       </section>
@@ -36,6 +26,8 @@
 <script>
 import Flavor from "../components/Flavor";
 import axios from "axios";
+import { mapMutations } from "vuex";
+import orderMutations from "../store/order/mutations.type";
 
 export default {
   data() {
@@ -68,9 +60,9 @@ export default {
       });
   },
   methods: {
-    addSize(event) {
-      this.$store.commit("order/addSize", { ...event });
-    }
+    ...mapMutations("order", {
+      addSize: orderMutations.addSize
+    })
   },
   components: {
     Flavor

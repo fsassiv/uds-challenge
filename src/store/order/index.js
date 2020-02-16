@@ -1,3 +1,5 @@
+import mutationsTypes from "./mutations.type";
+
 const defaultValues = () => ({
   flavor: {
     id: null,
@@ -21,13 +23,14 @@ export default {
   namespaced: true,
   state: defaultValues(),
   mutations: {
-    addFlavor(state, payload) {
-      Object.assign(state.flavor, payload);
+    [mutationsTypes.addFlavor](state, payload) {
+      state.flavor = { ...payload };
+      // Vue.set(state, "flavor", payload);
     },
-    addSize(state, payload) {
-      Object.assign(state.size, payload);
+    [mutationsTypes.addSize](state, payload) {
+      state.size = { ...payload };
     },
-    addAditional({ aditionals }, payload) {
+    [mutationsTypes.addAditional]({ aditionals }, payload) {
       //REMOVE ADITIONAL TO THE ORDER
       if ([...aditionals].length === 0) {
         aditionals.push(payload);
@@ -40,7 +43,7 @@ export default {
         }
       }
     },
-    removeAditional({ aditionals }, payload) {
+    [mutationsTypes.removeAditional]({ aditionals }, payload) {
       //REMOVE ADITIONAL FROM THE ORDER
       for (var i = 0; i < aditionals.length; i++) {
         if (aditionals[i].id === payload.id) {
@@ -48,7 +51,7 @@ export default {
         }
       }
     },
-    resetOrder(state) {
+    [mutationsTypes.resetOrder](state) {
       //SET THE DEFAULT VALUES BACK
       Object.assign(state, defaultValues());
     }

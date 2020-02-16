@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import order from "./order";
-import assets from "./assets";
+import order from "./order/index";
+import assets from "./assets/index";
 
 Vue.use(Vuex);
 

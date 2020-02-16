@@ -30,31 +30,31 @@ import Footer from "./layout/Footer.vue";
 import Content from "./layout/Content.vue";
 import SideMenu from "./layout/SideMenu.vue";
 import axios from "axios";
+import { mapActions } from "vuex";
+import assetsActions from "./store/assets/actions.type";
 
 export default {
   name: "app",
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App"
-    };
-  },
   created() {
     //redirecionar para pagina inicial
     if (this.$route.name !== "home") {
-      this.$router.push("/");
+      window.location.replace(window.location.origin);
     }
 
     //fetch aditionals list
     axios
       .get("/api/adicionals")
       .then(response => {
-        this.$store.dispatch("assets/setAditionalsAsync", response.data);
-        this.aditionals = response.data;
-        this.loading = false;
+        this.setAditionals(response.data);
       })
       .catch(err => {
         console.error(err);
       });
+  },
+  methods: {
+    ...mapActions("assets", {
+      setAditionals: assetsActions.setAditionalsAsync
+    })
   },
   components: {
     Header,
