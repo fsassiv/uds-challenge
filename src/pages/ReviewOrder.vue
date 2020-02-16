@@ -45,22 +45,16 @@
 
 <script>
 import filtersMixins from "../mixins/filters";
+import { mapGetters } from "vuex";
+import orderGetters from "../store/order/getters.type";
 
 export default {
-  data() {
-    return {
-      flavor: {},
-      size: {},
-      aditionals: []
-    };
-  },
-  created() {
-    const { flavor, size, aditionals } = this.$store.getters["order/getOrder"];
-    this.flavor = flavor;
-    this.size = size;
-    this.aditionals = aditionals;
-  },
   computed: {
+    ...mapGetters("order", {
+      flavor: orderGetters.getFlavor,
+      size: orderGetters.getSize,
+      aditionals: orderGetters.getAditionals
+    }),
     totalPrice() {
       return this.getTotal("price");
     },

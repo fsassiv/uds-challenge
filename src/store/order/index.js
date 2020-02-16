@@ -1,4 +1,5 @@
 import mutationsTypes from "./mutations.type";
+import gettersTypes from "./getters.type";
 
 const defaultValues = () => ({
   flavor: {
@@ -58,10 +59,10 @@ export default {
   },
   actions: {},
   getters: {
-    getFlavor: state => state.flavor,
-    getSize: state => state.size,
-    getAditionals: state => state.aditionals,
-    getOrder: ({ flavor, size, aditionals }) => ({
+    [gettersTypes.getFlavor]: state => state.flavor,
+    [gettersTypes.getSize]: state => state.size,
+    [gettersTypes.getAditionals]: state => state.aditionals,
+    [gettersTypes.getOrder]: ({ flavor, size, aditionals }) => ({
       flavor,
       size,
       aditionals

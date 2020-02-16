@@ -20,6 +20,9 @@
 
 <script>
 import filtersMixins from "../mixins/filters";
+import { mapMutations, mapGetters } from "vuex";
+import orderMutations from "../store/order/mutations.type";
+import orderGetters from "../store/order/getters.type";
 
 export default {
   mixins: [filtersMixins],
@@ -34,24 +37,34 @@ export default {
       added: false
     };
   },
+  computed: {
+    ...mapGetters("order", {
+      aditionalsInOrdered: orderGetters.getAditionals
+    })
+  },
   created() {
     //CHECK IF THE ADITIONAL IS ALREADY ADDED TO THE ORDER
     //TO KEEP IT ON NAVIGATION
-    const aditionalsInOrdered = this.$store.getters["order/getAditionals"];
 
-    aditionalsInOrdered.forEach(item => {
+    this.aditionalsInOrdered.forEach(item => {
       if (item.id === this.item.id) {
         this.added = true;
       }
     });
   },
+  methods: {
+    ...mapMutations("order", {
+      addAditional: orderMutations.addAditional,
+      removeAditional: orderMutations.removeAditional
+    })
+  },
   watch: {
     added() {
       if (this.added) {
-        this.$store.commit("order/addAditional", this.item);
+        this.addAditional(this.item);
         return;
       }
-      this.$store.commit("order/removeAditional", { id: this.item.id });
+      this.removeAditional({ id: this.item.id });
     }
   }
 };
