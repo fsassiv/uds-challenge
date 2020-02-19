@@ -10,7 +10,7 @@
     <div class="card-footer">
       <div class="form-group">
         <label class="form-checkbox">
-          <input type="checkbox" :id="item.id" :value="item" v-model="added" />
+          <input type="checkbox" :id="item.id" :value="item.name" v-model="added" />
           <i class="form-icon"></i> Add to order
         </label>
       </div>
